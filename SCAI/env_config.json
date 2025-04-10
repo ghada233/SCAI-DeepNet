@@ -1,0 +1,1 @@
+{"frame_size": [1280, 720], "action_meanings": ["left", "center", "right"], "observation_space": {"low": [0, 0, 0], "high": [1, 1, 1]}}

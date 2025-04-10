@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Video | DeepNet</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="home-screen">
+    <header class="navbar">
+      <div class="logo-brand">
+        <img class="logo" src="https://c.animaapp.com/m97eqwsgM1Yi1h/img/goal-1.png" alt="Logo"/>
+        <div class="brand">DeepNet</div>
+      </div>
+      <nav class="navbar-nav">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="#">How It Works</a>
+        <a class="nav-link" href="/upload">Upload Video</a>
+        <a class="nav-link" href="#">Contact</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <main class="main-content" style="text-align: center;">
+        <h1 class="main-title">Upload Your Penalty Kick Video</h1>
+        <p class="description">DeepNet will analyze goalkeeper reactions and ball movements using AI.</p>
+
+        <!-- <div class="upload-box">
+            <div class="group">     <img class="vector" src="https://c.animaapp.com/m97hgbsk4gTjZp/img/vector-1.svg" />
+            </div>
+            <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+              <input type="file" name="video" id="video" accept="video/*" required hidden>
+              <br>
+              <label for="video" class="custom-upload-btn">Upload video</label>
+                          </form>
+        </div> -->
+        <div class="upload-box">
+          <div class="group">     <img class="vector" src="https://c.animaapp.com/m97hgbsk4gTjZp/img/vector-1.svg" />
+          </div>
+        <form id="upload-form" action="{{ url_for('result') }}" method="GET" class="upload-form">
+          <input type="file" name="video" id="video" accept="video/*" required hidden>
+          <br>
+          <label for="video" class="custom-upload-btn">Upload video</label>
+          <input type="hidden" name="filename" id="filename">
+        </form>
+      </div>
+        <br><br>
+        <label for="video" class="text-wrapper-2">Extracting Ball & Goalkeeper Movements…</label>
+
+      </main>
+    </div>
+
+   
+    <script>
+      const videoInput = document.getElementById('video');
+      const form = document.getElementById('upload-form');
+    
+      videoInput.addEventListener('change', () => {
+        const file = videoInput.files[0];
+        if (file) {
+          // If you want to pass the filename to result page (optional)
+          document.getElementById('filename').value = file.name;
+          form.submit();
+        }
+      });
+    </script>
+    
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2025 DeepNet. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

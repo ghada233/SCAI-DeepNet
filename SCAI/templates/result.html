@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DeepNet | Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="home-screen">
+    <header class="navbar">
+      <div class="logo-brand">
+        <img class="logo" src="https://c.animaapp.com/m97eqwsgM1Yi1h/img/goal-1.png" alt="Logo"/>
+        <div class="brand">DeepNet</div>
+      </div>
+      <nav class="navbar-nav">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="#">How It Works</a>
+        <a class="nav-link" href="/upload">Upload Video</a>
+        <a class="nav-link" href="#">Contact</a>
+      </nav>
+    </header>
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px;">
+      <div class="video-container">
+        <iframe 
+          src="https://drive.google.com/file/d/1stqJPNJI9wXB5JpBFDtdx4d3Wv8hLnT4/preview" 
+          width="800" 
+          height="450" 
+          allow="autoplay" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      
+      <div class="button-group" style="display: flex; gap: 15px;">
+        <button class="cta-button" onclick="shareVideo()">Share</button>
+        <a class="cta-button" href="{{ url_for('static', filename='video_report.pdf') }}" download>Download Video Report</a>
+      </div>
+    </div>
+    
+      
+      <script>
+        function shareVideo() {
+          if (navigator.share) {
+            navigator.share({
+              title: 'Check out this analysis from DeepNet!',
+              url: window.location.href
+            }).catch(error => console.error('Error sharing', error));
+          } else {
+            alert('Sharing is not supported in this browser.');
+          }
+        }
+      </script>
+      
+   
+      
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2025 DeepNet. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Support</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
